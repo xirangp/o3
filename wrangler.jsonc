@@ -1,0 +1,44 @@
+/**
+ * Example Wrangler config used for CI type generation.
+ * Replace with real values in actual deployment config.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "o3",
+  "main": "./workers/app.ts",
+  "compatibility_date": "2026-07-26",
+
+  /**
+   * ╔══════════════════════════════════════════════════════════════╗
+   * ║ ⚠️ 安全提醒 - 部署前必读                                    ║
+   * ╠══════════════════════════════════════════════════════════════╣
+   * ║ 1. 务必修改 ADMIN_USERNAME 和 ADMIN_PASSWORD                 ║
+   * ║ 2. 不要使用弱密码（至少12位，含大小写+数字+符号）              ║
+   * ║ 3. 部署后建议在 Cloudflare Dashboard 开启以下防护：           ║
+   * ║    - Bot Fight Mode（自动检测恶意爬虫）                      ║
+   * ║    - Under Attack Mode（遭遇攻击时开启）                     ║
+   * ║    - WAF 自定义规则（屏蔽异常 UA / 高频 IP）                  ║
+   * ║ 4. 免费额度限制：Workers 10万请求/天，D1 500万读行/天        ║
+   * ╚══════════════════════════════════════════════════════════════╝
+   */
+
+  "vars": {
+    "ADMIN_USERNAME": "xirangp",
+    "ADMIN_PASSWORD": "hudieomega",
+    "SITE_TITLE": "o3",
+    "SITE_ANNOUNCEMENT": "",
+    "CHUNK_SIZE_MB": "10",
+    "WEBDAV_ENABLED": "false",
+    "WEBDAV_USERNAME": "webdav",
+    "WEBDAV_PASSWORD": "changeme",
+    "ONEDRIVE_CLIENT_ID": "cd529d2e-7e5c-48b5-ba0b-9df56bca8e4a",
+    "ONEDRIVE_CLIENT_SECRET": "KgX8Q~PoMgsCDVYSDKPvdZLXPQ8oPF-3qfQaOcOQ"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "o1",
+      "database_id": "fd739c3a-8144-44c6-955b-853137152ded"
+    }
+  ]
+}
