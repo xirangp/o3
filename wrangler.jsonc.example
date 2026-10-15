@@ -1,0 +1,42 @@
+/**
+ * Example Wrangler config used for CI type generation.
+ * Replace with real values in actual deployment config.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "clist",
+  "main": "./workers/app.ts",
+  "compatibility_date": "2025-04-04",
+
+  /**
+   * ╔══════════════════════════════════════════════════════════════╗
+   * ║  ⚠️  安全提醒 - 部署前必读                                    ║
+   * ╠══════════════════════════════════════════════════════════════╣
+   * ║  1. 务必修改 ADMIN_USERNAME 和 ADMIN_PASSWORD                 ║
+   * ║  2. 不要使用弱密码（至少12位，含大小写+数字+符号）              ║
+   * ║  3. 部署后建议在 Cloudflare Dashboard 开启以下防护：           ║
+   * ║     - Bot Fight Mode（自动检测恶意爬虫）                      ║
+   * ║     - Under Attack Mode（遭遇攻击时开启）                     ║
+   * ║     - WAF 自定义规则（屏蔽异常 UA / 高频 IP）                  ║
+   * ║  4. 免费额度限制：Workers 10万请求/天，D1 500万读行/天        ║
+   * ╚══════════════════════════════════════════════════════════════╝
+   */
+
+  "vars": {
+    "ADMIN_USERNAME": "admin",
+    "ADMIN_PASSWORD": "changeme",
+    "SITE_TITLE": "CList",
+    "SITE_ANNOUNCEMENT": "",
+    "CHUNK_SIZE_MB": "10",
+    "WEBDAV_ENABLED": "false",
+    "WEBDAV_USERNAME": "webdav",
+    "WEBDAV_PASSWORD": "changeme"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "clist",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}

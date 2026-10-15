@@ -1,0 +1,71 @@
+@import "tailwindcss" source(".");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  @apply bg-zinc-100 dark:bg-zinc-950;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* View Transition for theme toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.dark::view-transition-old(root) {
+  z-index: 2147483646;
+}
+
+html.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+html::view-transition-old(root) {
+  z-index: 1;
+}
+
+html::view-transition-new(root) {
+  z-index: 2147483646;
+}
+
+/* Markdown 渲染样式 */
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+.prose a:hover {
+  color: #1d4ed8;
+}
+.prose a:visited,
+.prose a.visited {
+  color: #db2777;
+}
+dark .prose a {
+  color: #60a5fa;
+}
+.dark .prose a:hover {
+  color: #93bbfd;
+}
+.dark .prose a:visited,
+.dark .prose a.visited {
+  color: #f472b6;
+}
+.prose del {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+.dark .prose del {
+  color: #6b7280;
+}
